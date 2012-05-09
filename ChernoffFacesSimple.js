@@ -4,7 +4,7 @@
 	
 	//node.window.addCSS(node.window.root, './CF/css/style.css');
 	
-	var CF = Ember.Application.create();
+	//var CF = Ember.Application.create();
 	
 	/**
 	 * Expose constructor
@@ -138,8 +138,9 @@
 		var fv = new FaceVector(features);
 		this.fp.redraw(fv);
 		// Without merging wrong values are passed as attributes
-		this.sc.init({features: JSUS.mergeOnValue(FaceVector.defaults, features)});
-		this.sc.refresh();
+		//this.sc.init({features: JSUS.mergeOnValue(FaceVector.defaults, features)});
+		//this.sc.init(features);
+		//this.sc.refresh();
 	};
 	
 	ChernoffFaces.prototype.getAllValues = function() {
@@ -214,14 +215,14 @@
 		}
 		
 		if (this.canvas.width > this.canvas.height) {
-			var ratio = this.canvas.width / face.head_radius * face.head_scale_x;
+			var ratio = this.canvas.width / face.head_radius ;
 		}
 		else {
-			var ratio = this.canvas.height / face.head_radius * face.head_scale_y;
+			var ratio = this.canvas.height / face.head_radius;
 		}
 		
-		face.scaleX = ratio / 2;
-		face.scaleY = ratio / 2;
+		face.scaleX = ratio / 2.5;
+		face.scaleY = ratio / 2.5;
 	}
 	
 	FacePainter.prototype.drawHead = function (face, x, y) {
