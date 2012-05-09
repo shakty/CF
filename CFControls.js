@@ -181,7 +181,7 @@
 //			},
 			nose_length: {
 				min: 0.2,
-				max: 30,
+				max: 18,
 				step: 0.01,
 				value: 15,
 				label: 'Nose length'
@@ -224,9 +224,9 @@
 //			}		
 			mouth_shape: {
 				min: 0,
-				max: 16000,
+				max: 60,
 				step: 1,
-				value: 12000,
+				value: 0,
 				label: 'Mouth Shape'
 			}		
 	};
@@ -246,7 +246,7 @@
 			value: 20,
 			label: 'Lower lip'
 		}	
-	}
+	};
 	
 	function CFControls (options) {
 		Controls.call(this, options);
@@ -259,7 +259,6 @@
 	CFControls.prototype.getItem = function (id, attributes) {
 		return node.window.getSlider(id, attributes);
 	};
-	
 	
 	CFControls.prototype.getAllValues = function() {
 		var out = {};
@@ -274,12 +273,32 @@
 					
 					if (key == 'mouth_shape') {
 						
-						console.log('KEY: ' + key, 'DEBUG');
-						console.log('VALUE: ' + el.value, 'DEBUG');
+						//console.log('KEY: ' + key, 'DEBUG');
+						//console.log('VALUE: ' + el.value, 'DEBUG');
+						var ms = CFControls.defaults.mouth_shape;
+						var limit = Math.abs(ms.max - ms.min) / 4;
+						var x = 0;
+						var y = 0;
 						
-						var values = d2xy(value, CFControls.others.mouth_top_y, CFControls.others.mouth_bottom_y);
-						out['mouth_top_y'] =  values.x;
-						out['mouth_bottom_y'] = values.y;
+						if (value < limit) {
+							y = value;
+						}
+						else if (value < 2*limit) {
+							y = limit;
+							x = value - limit;
+						}
+						else if (value < 3*limit) {
+							x = limit;
+							y = 3*limit - value;
+						}
+						else {
+							x = 0;
+							y = value - 4*limit;
+						}
+						
+						//var values = d2xy(value, CFControls.others.mouth_top_y, CFControls.others.mouth_bottom_y);
+						out['mouth_top_y'] = x;
+						out['mouth_bottom_y'] = y;
 					}
 					else {
 						
@@ -322,6 +341,7 @@
 		
 		var x = d / yspan;
 		var y = d / xspan;
+		var x = 0;
 		
 		console.log('in: ' + d);
 		console.log('out: ' + x + ' ' + y);
