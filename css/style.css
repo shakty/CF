@@ -31,38 +31,50 @@ div#cf_span {
 	width: 300px;
 }
 
-div#cf_span div{
+/* div#cf_span div{
   width: 30px;
   float: right;
+} */
+
+/* dl, dt, dd { */
+/* 	border: 1px solid #CCC; */
+/* } */
+
+#cf_span table {
+	width: 300px;
 }
 
-dl, dt, dd {
-	border: 1px solid #CCC;
-}
+/* #cf_span table td{ */
+/*   width: 150px; */
+/*   height: 20px */
+/* } */
 
+/* #cf_span table tr, td{ */
+/*   border: 1px solid green; */
+/* } */
 
-dl#cf_controls {
-	border: 1px solid #CCC;
-	font-weight: bold;
-	padding: 5px;
-	padding-top: 10px;
-	width: 400px;
-}
+/* dl#cf_controls { */
+/* 	border: 1px solid #CCC; */
+/* 	font-weight: bold; */
+/* 	padding: 5px; */
+/* 	padding-top: 10px; */
+/* 	width: 400px; */
+/* } */
 
-dl#cf_controls dt {
-  background: #CCC;
-}
+/* dl#cf_controls dt { */
+/*   background: #CCC; */
+/* } */
 
-dl#cf_controls dd {
-  background: #FFF;
-	margin-left: 10px;
-	font-weight: normal;
-}
+/* dl#cf_controls dd { */
+/*   background: #FFF; */
+/* 	margin-left: 10px; */
+/* 	font-weight: normal; */
+/* } */
 
 /* jQuery */
 
 .ui-slider {
-	margin-top: 5px;
+	//margin-top: 5px;
 	height: 5px;
 }
 
@@ -71,6 +83,10 @@ dl#cf_controls dd {
   width: 10px;
 }
 
+
+#head_scale_y, #eye_height, #nose_length {
+	margin-bottom: 20px;
+}
 
 /* General nodeGame */
 

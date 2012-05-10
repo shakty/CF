@@ -26,69 +26,106 @@
     
 </script>
 <div id="cf_span">
-<dl>
-<dt>Head</dt>
-	<dd>
+<table>
+<tr>
+<th colspan="2">Head</th>
+</tr>
+<tr>
+  <td>
 		<label for="head_scale_x">Scale head horizontally</label>
-		<span id="head_scale_x">&nbsp;
-		</span>
-  </dd>
-	<dd>
-		<label id="" for="head_scale_y">Scale head vertically</label>
-		<span id="head_scale_y">&nbsp;
-		</span>
-	</dd>
-</dl>
+  </td>
+  <td>
+    <div id="head_scale_x">
+    </div>
+  </td>
+</tr>
+<tr>
+	<td>
+		<label for="head_scale_y">Scale head vertically</label>
+		</td>
+		<td>
+		<div id="head_scale_y">&nbsp;
+		</div>
+	</td>
+</table>
 
-<dl>
-<dt>Eye and Eyebrow</dt>
-  <dd>
-		<label id="" for="eye_spacing">Eye spacing</label>
-		<span id="eye_spacing">&nbsp;
-		</span>
-	</dd>
-	<dd>
-		<label id="" for="eye_scale_x">Scale eyes horizontally</label>
-		<span id="eye_scale_x">&nbsp;
-		</span>
-	</dd>
-	<dd>
-		<label id="" for="eye_scale_y">Scale eyes vertically</label>
-		<span id="eye_scale_y">&nbsp;
-		</span>
-	</dd>
-  <dd>
-		<label id="" for="eyebrow_angle">Eyebrow angle</label>
-		<span id="eyebrow_angle">&nbsp;
-		</span>
-		</dd>
-	<dd>
-		<label id="" for="eye_height">Eye and Eyebrow height</label>
-		<span id="eye_height">&nbsp;
-		</span>
-	</dd>
-</dl>
+<table>
+<tr>
+<th colspan="2">Eye and Eyebrow</th>
+</tr>
+<tr>
+  <td>
+		<label for="eye_spacing">Eye spacing</label>
+		</td>
+    <td>
+		<div id="eye_spacing">
+		</div>
+	</td>
+<tr>
+  <td>
+		<label for="eye_scale_x">Scale eyes horizontally</label>
+		</td>
+    <td>
+		<div id="eye_scale_x">
+		</div>
+	</td>
+<tr>
+  <td>
+		<label for="eye_scale_y">Scale eyes vertically</label>
+		</td>
+    <td>
+		<div id="eye_scale_y">
+		</div>
+	</td>
+<tr>
+  <td>
+		<label for="eyebrow_angle">Eyebrow angle</label>
+		</td>
+    <td>
+		<div id="eyebrow_angle">
+		</div>
+		</td>
+<tr>
+  <td>
+		<label for="eye_height">Eye and Eyebrow height</label>
+		</td>
+		<td>
+		<div id="eye_height">
+		</div>
+	</td>
+	</tr>
+</table>
 
-<dl>
-	<dt>Nose</dt>
-		<dd>
-			<label id="" for="nose_length">Nose length</label>
-			<span id="nose_length">&nbsp;
-			</span>
-		</dd>
-</dl>
-
-<dl>
-	<dt>Mouth</dt>
-		<dd>
-		
-			<label id="" for="mouth_shape">Mouth Shape</label>
-			<span>
-			<div id="mouth_shape">&nbsp;
+<table>
+<tr>
+<th colspan="2">Nose</th>
+</tr>
+<tr>
+		<td>
+			<label for="nose_length">Nose length</label>
+			</td>
+			<td>
+			<div id="nose_length">
 			</div>
-			</span>&nbsp;
-		</dd>
-</dl>
+		</td>
+</table>
+
+<table>
+  <tr>
+	<th colspan="2">Mouth</th>
+	</tr>
+		<td>
+			<label id="" for="mouth_shape">Mouth Shape</label>
+		</td>
+		<td>
+      <div id="mouth_shape">
+      </div>
+    </td>
+    </tr>
+</table>
+
+
+
 
 
 </div>
@@ -183,22 +220,27 @@ var defaults = {
 
 $(function() {
    
-	for (var i=0; i< defaults.length; i++) {
-		
-	}
     // setup graphic EQ
     $( "#cf_span div" ).each(function() {
       // read initial values from markup and remove that
       var settings = defaults[this.id];
       settings['animate'] = true;
       
+      settings.slide = function(e, ui) {
+    	  node.emit('CF_CHANGE');
+      };
+      
       //console.log(settings);
       //console.log(this.id);
-      $( this ).slider(settings);
+      var sl = $( this ).slider(settings);
       
     });
   });
 
+
+  node.on('CF_CHANGE', function(){
+	  console.log()
+  })
 
 
 

@@ -67,11 +67,6 @@
 		Controls: {}
 	};
 	
-	
-
-	
-	
-	
 	CFControls.defaults = {
 			// Head
 //			head_radius: {
