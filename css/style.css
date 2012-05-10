@@ -14,30 +14,6 @@ iframe#mainframe {
 	padding: 10px;
 }
 
-div#waiting {
-  z-index: 10000;
-  filter: alpha(opacity=50); /*older IE*/
-  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* IE */
-  -moz-opacity: .50; /*older Mozilla*/
-  -khtml-opacity: 0.5;   /*older Safari*/
-  opacity: 0.5;   /*supported by current Mozilla, Safari, and Opera*/
-  background-color:#000000;
-  position:fixed; 
-	top:0px; left:0px; width:100%; height:100%; 
-	color:#FFFFFF; 
-	text-align:center; 
-	vertical-align:middle;
-	font-weight: bold;
-	padding: 20px;
-}
-
-div#gn_header {
-	width: 90%;
-  padding: 10px;
-  color: black;
-  border: 1px dashed #CCC;
-}
-
 canvas {
 	border: 1px #CCC solid;
 }
@@ -51,56 +27,50 @@ input[type="range"] {
 	margin-left: 5px
 }
 
-fieldset#visualtimer_fieldset {
-	float: right;
-	width: 80px;
-	border: 5px solid black;
+div#cf_span {
+	width: 300px;
 }
 
-div#visualtimer_div {
-  width: 80px;
-	font-size: 16px;
+div#cf_span div{
+  width: 30px;
+  float: right;
 }
 
-fieldset#visualstate_fieldset {
-	float: left;
-  width: 200px;
-  border: 5px solid black;
-}
-
-div#VisualState_div {
-  width: 200px;
-  font-size: 16px;
+dl, dt, dd {
+	border: 1px solid #CCC;
 }
 
 
-
-dl#all_ex {
+dl#cf_controls {
 	border: 1px solid #CCC;
 	font-weight: bold;
 	padding: 5px;
 	padding-top: 10px;
+	width: 400px;
 }
 
-dl#all_ex dt {
+dl#cf_controls dt {
   background: #CCC;
 }
 
-dl#all_ex dd {
+dl#cf_controls dd {
   background: #FFF;
 	margin-left: 10px;
 	font-weight: normal;
 }
 
-table#create_sub_his {
-  border: 1px solid #CCC;
-  vertical-align: top;
+/* jQuery */
+
+.ui-slider {
+	margin-top: 5px;
+	height: 5px;
 }
 
-table#create_sub_his td{
-  border: 1px solid #CCC;
-  vertical-align: top;
+.ui-slider-horizontal .ui-state-default {
+  height: 20px;
+  width: 10px;
 }
+
 
 /* General nodeGame */
 

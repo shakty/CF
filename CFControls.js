@@ -41,13 +41,23 @@
 	*
 	*/
 
-	Controls = exports.Controls;
+	jQuerySlider = exports.Controls.jQuerySlider;
 	
 	
 	exports.CFControls = CFControls;
 	
-	CFControls.prototype.__proto__ = Controls.prototype;
+	CFControls.prototype.__proto__ = jQuerySlider.prototype;
 	CFControls.prototype.constructor = CFControls;
+	
+	
+	Slider = exports.Controls.Slider;
+	
+	
+	exports.CFControls = CFControls;
+	
+	CFControls.prototype.__proto__ = Slider.prototype;
+	CFControls.prototype.constructor = CFControls;
+	
 	
 	CFControls.id = 'CFControls';
 	CFControls.name = 'CF Controls';
@@ -56,6 +66,11 @@
 	CFControls.dependencies = {
 		Controls: {}
 	};
+	
+	
+
+	
+	
 	
 	CFControls.defaults = {
 			// Head
@@ -112,13 +127,13 @@
 				label: 'Scale eyes vertically'
 			},
 			// Pupil
-			pupil_radius: {
-				min: 1,
-				max: 9,
-				step: 0.01,
-				value: 1,  //this.eye_radius;
-				label: 'Pupil radius'
-			},
+//			pupil_radius: {
+//				min: 1,
+//				max: 9,
+//				step: 0.01,
+//				value: 1,  //this.eye_radius;
+//				label: 'Pupil radius'
+//			},
 //			pupil_scale_x: {
 //				min: 0.2,
 //				max: 2,
@@ -224,7 +239,7 @@
 //			}		
 			mouth_shape: {
 				min: 0,
-				max: 60,
+				max: 30,
 				step: 1,
 				value: 0,
 				label: 'Mouth Shape'
@@ -249,16 +264,9 @@
 	};
 	
 	function CFControls (options) {
-		Controls.call(this, options);
+		jQuerySlider.call(this, options);
 	};
 	
-	CFControls.prototype.add = function (root, id, attributes) {
-		return node.window.addSlider(root, id, attributes);
-	};
-	
-	CFControls.prototype.getItem = function (id, attributes) {
-		return node.window.getSlider(id, attributes);
-	};
 	
 	CFControls.prototype.getAllValues = function() {
 		var out = {};
@@ -276,25 +284,25 @@
 						//console.log('KEY: ' + key, 'DEBUG');
 						//console.log('VALUE: ' + el.value, 'DEBUG');
 						var ms = CFControls.defaults.mouth_shape;
-						var limit = Math.abs(ms.max - ms.min) / 4;
-						var x = 0;
-						var y = 0;
+						var span = Math.abs(ms.max - ms.min);
+						var x = value * 0.25;
+						var y = value;
 						
-						if (value < limit) {
-							y = value;
-						}
-						else if (value < 2*limit) {
-							y = limit;
-							x = value - limit;
-						}
-						else if (value < 3*limit) {
-							x = limit;
-							y = 3*limit - value;
-						}
-						else {
-							x = 0;
-							y = value - 4*limit;
-						}
+//						if (value < limit) {
+//							y = value;
+//						}
+//						else if (value < 2*limit) {
+//							y = limit;
+//							x = value - limit;
+//						}
+//						else if (value < 3*limit) {
+//							x = limit;
+//							y = 3*limit - value;
+//						}
+//						else {
+//							x = 0;
+//							y = value - 4*limit;
+//						}
 						
 						//var values = d2xy(value, CFControls.others.mouth_top_y, CFControls.others.mouth_bottom_y);
 						out['mouth_top_y'] = x;
@@ -315,7 +323,7 @@
 		out['eyebrow_length'] = 10;
 		out['nose_width'] = 5;
 		out['eye_radius'] = 5;
-		//out['pupil_radius'] = 1;
+		out['pupil_radius'] = 1;
 		out['pupil_scale_y'] = 1;
 		out['pupil_scale_x'] = 1;
 		out['head_radius'] = 30
